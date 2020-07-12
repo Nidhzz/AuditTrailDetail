@@ -22,6 +22,16 @@ node {
         error 'Build generation failed.'
       }      
     }
+    
+        stage('Deploying to firebase') {
+        rc = bat returnStatus: true, script: "\"${fb}\"firebase deploy --token 1//0gWS9ZqAab6ifCgYIARAAGBASNwF-L9Ir8DpzLdf72n3LPXsylMyokp7gdjtw03_PWeG95bcykeg514BDNYpfp59DAO4i5hpeAzU"
+
+    //   rc = command "firebase deploy"
+      if (rc != 0) {
+        error 'Deployment failed.'
+      }      
+    }
+
            
 }
 
